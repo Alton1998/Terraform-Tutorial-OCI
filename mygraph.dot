@@ -1,0 +1,22 @@
+digraph {
+	compound = "true"
+	newrank = "true"
+	subgraph "root" {
+		"[root] oci_core_subnet.dev (expand)" [label = "oci_core_subnet.dev", shape = "box"]
+		"[root] oci_core_vcn.internal (expand)" [label = "oci_core_vcn.internal", shape = "box"]
+		"[root] provider[\"registry.terraform.io/hashicorp/oci\"]" [label = "provider[\"registry.terraform.io/hashicorp/oci\"]", shape = "diamond"]
+		"[root] var.compartment_id" [label = "var.compartment_id", shape = "note"]
+		"[root] var.region" [label = "var.region", shape = "note"]
+		"[root] oci_core_subnet.dev (expand)" -> "[root] oci_core_vcn.internal (expand)"
+		"[root] oci_core_vcn.internal (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/oci\"]"
+		"[root] oci_core_vcn.internal (expand)" -> "[root] var.compartment_id"
+		"[root] output.vcn_cidr (expand)" -> "[root] oci_core_vcn.internal (expand)"
+		"[root] output.vcn_state (expand)" -> "[root] oci_core_vcn.internal (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/oci\"] (close)" -> "[root] oci_core_subnet.dev (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/oci\"]" -> "[root] var.region"
+		"[root] root" -> "[root] output.vcn_cidr (expand)"
+		"[root] root" -> "[root] output.vcn_state (expand)"
+		"[root] root" -> "[root] provider[\"registry.terraform.io/hashicorp/oci\"] (close)"
+	}
+}
+
